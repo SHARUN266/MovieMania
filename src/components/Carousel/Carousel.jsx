@@ -20,7 +20,12 @@ export default function Carousel({ data, loading }) {
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
   const navigation = (direction) => {
-    console.log(direction);
+    const container = carouselContainer.current;
+    const scrollAmount =
+      direction === "left"
+        ? container.scrollLeft - (container.offsetWidth + 20)
+        : container.scrollLeft + (container.offsetWidth + 20);
+    container.scrollTo({ left: scrollAmount, behavior: "smooth" });
   };
 
   const skItem = () => {
@@ -54,18 +59,22 @@ export default function Carousel({ data, loading }) {
             {skItem()}
           </div>
         ) : (
-          <div className="carouselItems">
+          <div className="carouselItems" ref={carouselContainer}>
             {data?.map((item) => {
               const posterUrl = item.poster_path
                 ? url.poster + item.poster_path
                 : PosterFallback;
 
               return (
-                <div key={item.id} className="carouselItem">
+                <div
+                  key={item.id}
+                  className="carouselItem"
+                  onClick={() => navigate(`/${item.media_type}/${item.id}`)}
+                >
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
-                    <Genres data={item.genre_ids.slice(0,2)} />
+                    <Genres data={item.genre_ids.slice(0, 2)} />
                   </div>
                   <div className="textBlock">
                     <span className="title">{item.title || item.name}</span>
