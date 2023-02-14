@@ -15,7 +15,7 @@ import "./Style.scss";
 import CircleRating from "../circleRating/circleRating";
 import Genres from "../genres/Genres";
 
-export default function Carousel({ data, loading }) {
+export default function Carousel({ data, loading, endpoint }) {
   const carouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -69,7 +69,9 @@ export default function Carousel({ data, loading }) {
                 <div
                   key={item.id}
                   className="carouselItem"
-                  onClick={() => navigate(`/${item.media_type}/${item.id}`)}
+                  onClick={() =>
+                    navigate(`/${item.media_type || endpoint}/${item.id}`)
+                  }
                 >
                   <div className="posterBlock">
                     <Img src={posterUrl} />
