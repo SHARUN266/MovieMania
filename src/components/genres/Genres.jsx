@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import "./style.scss"
 export default function Genres({ data }) {
   const { genres } = useSelector((state) => state.home);
-  console.log(data)
+ 
   return (
     <div className="genres">
       {data?.map((g) => {
