@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch'
+import Cast from './Cast/Cast';
 import DetailsBanner from './DetailBanner/DetailsBanner';
 
 export default function Details() {
@@ -12,6 +13,7 @@ export default function Details() {
   return (
     <div>
       <DetailsBanner   video={data?.results?.[0]} crew={credits?.crew}  />
+      <Cast data={credits?.cast} loading={creditsLoading}   />
     </div>
   )
 }
