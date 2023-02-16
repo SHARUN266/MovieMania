@@ -1,8 +1,8 @@
 {
+  "homepage": "https://SHARUN266.github.io/movie-mania",
   "name":"my",
   "version": "1.0.0",
   "description": "My MovieMania app",
-  "homepage": "https://SHARUN266.github.io/movie-mania",
   "private": true,
   "type": "module",
   "scripts": {
