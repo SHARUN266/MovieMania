@@ -35,7 +35,7 @@ const Explore = () => {
     const { mediaType } = useParams();
 
     const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
-
+    document.title=mediaType=="tv"?"TV Shows":"Movies"
     const fetchInitialData = () => {
         setLoading(true);
         fetchDataFromApi(`/discover/${mediaType}`, filters).then((res) => {

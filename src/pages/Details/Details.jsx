@@ -8,6 +8,7 @@ import DetailsBanner from "./DetailBanner/DetailsBanner";
 import VideosSection from "./VideoSection/VideoSection";
 
 export default function Details() {
+  document.title="Details"
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}/videos`);
   const { data: credits, loading: creditsLoading } = useFetch(

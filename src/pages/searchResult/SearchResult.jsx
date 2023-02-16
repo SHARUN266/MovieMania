@@ -11,6 +11,7 @@ export default function SearchResult() {
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
   const { query } = useParams();
+  document.title = "Search of " + query;
   const fetchIntialData = () => {
     setLoading(true);
     fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then(
@@ -32,7 +33,7 @@ export default function SearchResult() {
     );
   };
   useEffect(() => {
-    setPageNum(1)
+    setPageNum(1);
     fetchIntialData();
   }, [query]);
   return (
